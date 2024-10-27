@@ -1,0 +1,1749 @@
+openapi: 3.0.1
+info:
+  description: ""
+  title: standard public schema
+  version: 12.2.3
+externalDocs:
+  description: PostgREST Documentation
+  url: https://postgrest.org/en/v12/references/api.html
+servers:
+- url: http://localhost:3000/
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: OpenAPI description (this document)
+      tags:
+      - Introspection
+  /market_metadata:
+    delete:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: category
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - market_metadata
+    get:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: category
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/market_metadata'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/market_metadata'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/market_metadata'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/market_metadata'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - market_metadata
+    patch:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: category
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+        description: market_metadata
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - market_metadata
+      x-codegen-request-body-name: market_metadata
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/market_metadata'
+        description: market_metadata
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - market_metadata
+      x-codegen-request-body-name: market_metadata
+  /settlement:
+    delete:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: next_day
+        schema:
+          type: string
+      - in: query
+        name: after_next
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - settlement
+    get:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: next_day
+        schema:
+          type: string
+      - in: query
+        name: after_next
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/settlement'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/settlement'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/settlement'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/settlement'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - settlement
+    patch:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: next_day
+        schema:
+          type: string
+      - in: query
+        name: after_next
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/settlement'
+        description: settlement
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - settlement
+      x-codegen-request-body-name: settlement
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/settlement'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/settlement'
+        description: settlement
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - settlement
+      x-codegen-request-body-name: settlement
+  /inventory:
+    delete:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: num_share
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - inventory
+    get:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: num_share
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/inventory'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/inventory'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/inventory'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/inventory'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - inventory
+    patch:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: num_share
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/inventory'
+        description: inventory
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - inventory
+      x-codegen-request-body-name: inventory
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/inventory'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/inventory'
+        description: inventory
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - inventory
+      x-codegen-request-body-name: inventory
+  /alembic_version:
+    delete:
+      parameters:
+      - in: query
+        name: version_num
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - alembic_version
+    get:
+      parameters:
+      - in: query
+        name: version_num
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/alembic_version'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/alembic_version'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/alembic_version'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/alembic_version'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - alembic_version
+    patch:
+      parameters:
+      - in: query
+        name: version_num
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+        description: alembic_version
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - alembic_version
+      x-codegen-request-body-name: alembic_version
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/alembic_version'
+        description: alembic_version
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - alembic_version
+      x-codegen-request-body-name: alembic_version
+  /balance:
+    delete:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: available
+        schema:
+          type: string
+      - in: query
+        name: presave_amount
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - balance
+    get:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: available
+        schema:
+          type: string
+      - in: query
+        name: presave_amount
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/balance'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/balance'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/balance'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/balance'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - balance
+    patch:
+      parameters:
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: available
+        schema:
+          type: string
+      - in: query
+        name: presave_amount
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/balance'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/balance'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/balance'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/balance'
+        description: balance
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - balance
+      x-codegen-request-body-name: balance
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/balance'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/balance'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/balance'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/balance'
+        description: balance
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - balance
+      x-codegen-request-body-name: balance
+  /kline:
+    delete:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: open
+        schema:
+          type: string
+      - in: query
+        name: high
+        schema:
+          type: string
+      - in: query
+        name: low
+        schema:
+          type: string
+      - in: query
+        name: close
+        schema:
+          type: string
+      - in: query
+        name: volume
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - kline
+    get:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: open
+        schema:
+          type: string
+      - in: query
+        name: high
+        schema:
+          type: string
+      - in: query
+        name: low
+        schema:
+          type: string
+      - in: query
+        name: close
+        schema:
+          type: string
+      - in: query
+        name: volume
+        schema:
+          type: string
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Ordering
+        in: query
+        name: order
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: header
+        name: Range-Unit
+        schema:
+          default: items
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Limiting and Pagination
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - count=none
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/kline'
+                type: array
+            application/vnd.pgrst.object+json;nulls=stripped:
+              schema:
+                items:
+                  $ref: '#/components/schemas/kline'
+                type: array
+            application/vnd.pgrst.object+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/kline'
+                type: array
+            text/csv:
+              schema:
+                items:
+                  $ref: '#/components/schemas/kline'
+                type: array
+          description: OK
+        "206":
+          content: {}
+          description: Partial Content
+      tags:
+      - kline
+    patch:
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        schema:
+          type: string
+      - in: query
+        name: dt
+        schema:
+          type: string
+      - in: query
+        name: open
+        schema:
+          type: string
+      - in: query
+        name: high
+        schema:
+          type: string
+      - in: query
+        name: low
+        schema:
+          type: string
+      - in: query
+        name: close
+        schema:
+          type: string
+      - in: query
+        name: volume
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kline'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/kline'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/kline'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/kline'
+        description: kline
+        required: false
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      tags:
+      - kline
+      x-codegen-request-body-name: kline
+    post:
+      parameters:
+      - description: Filtering Columns
+        in: query
+        name: select
+        schema:
+          type: string
+      - description: Preference
+        in: header
+        name: Prefer
+        schema:
+          enum:
+          - return=representation
+          - return=minimal
+          - return=none
+          - resolution=ignore-duplicates
+          - resolution=merge-duplicates
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kline'
+          application/vnd.pgrst.object+json;nulls=stripped:
+            schema:
+              $ref: '#/components/schemas/kline'
+          application/vnd.pgrst.object+json:
+            schema:
+              $ref: '#/components/schemas/kline'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/kline'
+        description: kline
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      tags:
+      - kline
+      x-codegen-request-body-name: kline
+components:
+  parameters:
+    preferParams:
+      description: Preference
+      in: header
+      name: Prefer
+      schema:
+        enum:
+        - params=single-object
+        type: string
+    preferReturn:
+      description: Preference
+      in: header
+      name: Prefer
+      schema:
+        enum:
+        - return=representation
+        - return=minimal
+        - return=none
+        type: string
+    preferCount:
+      description: Preference
+      in: header
+      name: Prefer
+      schema:
+        enum:
+        - count=none
+        type: string
+    preferPost:
+      description: Preference
+      in: header
+      name: Prefer
+      schema:
+        enum:
+        - return=representation
+        - return=minimal
+        - return=none
+        - resolution=ignore-duplicates
+        - resolution=merge-duplicates
+        type: string
+    select:
+      description: Filtering Columns
+      in: query
+      name: select
+      schema:
+        type: string
+    on_conflict:
+      description: On Conflict
+      in: query
+      name: on_conflict
+      schema:
+        type: string
+    order:
+      description: Ordering
+      in: query
+      name: order
+      schema:
+        type: string
+    range:
+      description: Limiting and Pagination
+      in: header
+      name: Range
+      schema:
+        type: string
+    rangeUnit:
+      description: Limiting and Pagination
+      in: header
+      name: Range-Unit
+      schema:
+        default: items
+        type: string
+    offset:
+      description: Limiting and Pagination
+      in: query
+      name: offset
+      schema:
+        type: string
+    limit:
+      description: Limiting and Pagination
+      in: query
+      name: limit
+      schema:
+        type: string
+    rowFilter.market_metadata.id:
+      in: query
+      name: id
+      schema:
+        type: string
+    rowFilter.market_metadata.symbol:
+      in: query
+      name: symbol
+      schema:
+        type: string
+    rowFilter.market_metadata.category:
+      in: query
+      name: category
+      schema:
+        type: string
+    rowFilter.settlement.dt:
+      in: query
+      name: dt
+      schema:
+        type: string
+    rowFilter.settlement.next_day:
+      in: query
+      name: next_day
+      schema:
+        type: string
+    rowFilter.settlement.after_next:
+      in: query
+      name: after_next
+      schema:
+        type: string
+    rowFilter.settlement.id:
+      in: query
+      name: id
+      schema:
+        type: string
+    rowFilter.inventory.dt:
+      in: query
+      name: dt
+      schema:
+        type: string
+    rowFilter.inventory.symbol:
+      in: query
+      name: symbol
+      schema:
+        type: string
+    rowFilter.inventory.num_share:
+      in: query
+      name: num_share
+      schema:
+        type: string
+    rowFilter.inventory.id:
+      in: query
+      name: id
+      schema:
+        type: string
+    rowFilter.alembic_version.version_num:
+      in: query
+      name: version_num
+      schema:
+        type: string
+    rowFilter.balance.dt:
+      in: query
+      name: dt
+      schema:
+        type: string
+    rowFilter.balance.available:
+      in: query
+      name: available
+      schema:
+        type: string
+    rowFilter.balance.presave_amount:
+      in: query
+      name: presave_amount
+      schema:
+        type: string
+    rowFilter.balance.id:
+      in: query
+      name: id
+      schema:
+        type: string
+    rowFilter.kline.id:
+      in: query
+      name: id
+      schema:
+        type: string
+    rowFilter.kline.symbol:
+      in: query
+      name: symbol
+      schema:
+        type: string
+    rowFilter.kline.dt:
+      in: query
+      name: dt
+      schema:
+        type: string
+    rowFilter.kline.open:
+      in: query
+      name: open
+      schema:
+        type: string
+    rowFilter.kline.high:
+      in: query
+      name: high
+      schema:
+        type: string
+    rowFilter.kline.low:
+      in: query
+      name: low
+      schema:
+        type: string
+    rowFilter.kline.close:
+      in: query
+      name: close
+      schema:
+        type: string
+    rowFilter.kline.volume:
+      in: query
+      name: volume
+      schema:
+        type: string
+  requestBodies:
+    body.market_metadata:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/market_metadata'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/market_metadata'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/market_metadata'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/market_metadata'
+      description: market_metadata
+      required: false
+    body.settlement:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/settlement'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/settlement'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/settlement'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/settlement'
+      description: settlement
+      required: false
+    body.inventory:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inventory'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/inventory'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/inventory'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/inventory'
+      description: inventory
+      required: false
+    body.alembic_version:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/alembic_version'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/alembic_version'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/alembic_version'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/alembic_version'
+      description: alembic_version
+      required: false
+    body.balance:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/balance'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/balance'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/balance'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/balance'
+      description: balance
+      required: false
+    body.kline:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kline'
+        application/vnd.pgrst.object+json;nulls=stripped:
+          schema:
+            $ref: '#/components/schemas/kline'
+        application/vnd.pgrst.object+json:
+          schema:
+            $ref: '#/components/schemas/kline'
+        text/csv:
+          schema:
+            $ref: '#/components/schemas/kline'
+      description: kline
+      required: false
+  schemas:
+    market_metadata:
+      example:
+        symbol: symbol
+        id: 0
+        category: category
+      properties:
+        id:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: integer
+          type: integer
+        symbol:
+          format: character varying
+          maxLength: 255
+          type: string
+        category:
+          format: character varying
+          maxLength: 255
+          type: string
+      required:
+      - id
+      - symbol
+      type: object
+    settlement:
+      example:
+        dt: 2000-01-23
+        after_next: 6
+        next_day: 0
+        id: 1
+      properties:
+        dt:
+          format: date
+          type: string
+        next_day:
+          format: bigint
+          type: integer
+        after_next:
+          format: bigint
+          type: integer
+        id:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: integer
+          type: integer
+      required:
+      - dt
+      - id
+      type: object
+    inventory:
+      example:
+        dt: 2000-01-23
+        symbol: symbol
+        id: 6
+        num_share: 0
+      properties:
+        dt:
+          format: date
+          type: string
+        symbol:
+          format: character varying
+          type: string
+        num_share:
+          format: integer
+          type: integer
+        id:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: integer
+          type: integer
+      required:
+      - dt
+      - id
+      - num_share
+      - symbol
+      type: object
+    alembic_version:
+      example:
+        version_num: version_num
+      properties:
+        version_num:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: character varying
+          maxLength: 32
+          type: string
+      required:
+      - version_num
+      type: object
+    balance:
+      example:
+        dt: 2000-01-23
+        presave_amount: 6
+        available: 0
+        id: 1
+      properties:
+        dt:
+          format: date
+          type: string
+        available:
+          format: bigint
+          type: integer
+        presave_amount:
+          format: bigint
+          type: integer
+        id:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: integer
+          type: integer
+      required:
+      - dt
+      - id
+      type: object
+    kline:
+      example:
+        dt: 2000-01-23
+        volume: 2
+        symbol: symbol
+        high: 1.4658129805029452
+        low: 5.962133916683182
+        id: 0
+        close: 5.637376656633329
+        open: 6.027456183070403
+      properties:
+        id:
+          description: |-
+            Note:
+            This is a Primary Key.<pk/>
+          format: integer
+          type: integer
+        symbol:
+          format: character varying
+          maxLength: 255
+          type: string
+        dt:
+          format: date
+          type: string
+        open:
+          format: double precision
+          type: number
+        high:
+          format: double precision
+          type: number
+        low:
+          format: double precision
+          type: number
+        close:
+          format: double precision
+          type: number
+        volume:
+          format: bigint
+          type: integer
+      required:
+      - close
+      - dt
+      - high
+      - id
+      - low
+      - open
+      - symbol
+      - volume
+      type: object
+x-original-swagger-version: "2.0"
