@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Dt** | **string** |  | 
 **Available** | Pointer to **int32** |  | [optional] 
-**PresaveAmount** | Pointer to **int32** |  | [optional] 
 **Id** | **int32** | Note: This is a Primary Key.&lt;pk/&gt; | 
 
 ## Methods
@@ -72,31 +71,6 @@ SetAvailable sets Available field to given value.
 `func (o *Balance) HasAvailable() bool`
 
 HasAvailable returns a boolean if a field has been set.
-
-### GetPresaveAmount
-
-`func (o *Balance) GetPresaveAmount() int32`
-
-GetPresaveAmount returns the PresaveAmount field if non-nil, zero value otherwise.
-
-### GetPresaveAmountOk
-
-`func (o *Balance) GetPresaveAmountOk() (*int32, bool)`
-
-GetPresaveAmountOk returns a tuple with the PresaveAmount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresaveAmount
-
-`func (o *Balance) SetPresaveAmount(v int32)`
-
-SetPresaveAmount sets PresaveAmount field to given value.
-
-### HasPresaveAmount
-
-`func (o *Balance) HasPresaveAmount() bool`
-
-HasPresaveAmount returns a boolean if a field has been set.
 
 ### GetId
 

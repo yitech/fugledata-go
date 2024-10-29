@@ -27,7 +27,6 @@ type ApiBalanceDeleteRequest struct {
 	ApiService *BalanceAPIService
 	dt *string
 	available *string
-	presaveAmount *string
 	id *string
 	prefer *string
 }
@@ -39,11 +38,6 @@ func (r ApiBalanceDeleteRequest) Dt(dt string) ApiBalanceDeleteRequest {
 
 func (r ApiBalanceDeleteRequest) Available(available string) ApiBalanceDeleteRequest {
 	r.available = &available
-	return r
-}
-
-func (r ApiBalanceDeleteRequest) PresaveAmount(presaveAmount string) ApiBalanceDeleteRequest {
-	r.presaveAmount = &presaveAmount
 	return r
 }
 
@@ -99,9 +93,6 @@ func (a *BalanceAPIService) BalanceDeleteExecute(r ApiBalanceDeleteRequest) (*ht
 	}
 	if r.available != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "available", r.available, "", "")
-	}
-	if r.presaveAmount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "presave_amount", r.presaveAmount, "", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
@@ -159,7 +150,6 @@ type ApiBalanceGetRequest struct {
 	ApiService *BalanceAPIService
 	dt *string
 	available *string
-	presaveAmount *string
 	id *string
 	select_ *string
 	order *string
@@ -177,11 +167,6 @@ func (r ApiBalanceGetRequest) Dt(dt string) ApiBalanceGetRequest {
 
 func (r ApiBalanceGetRequest) Available(available string) ApiBalanceGetRequest {
 	r.available = &available
-	return r
-}
-
-func (r ApiBalanceGetRequest) PresaveAmount(presaveAmount string) ApiBalanceGetRequest {
-	r.presaveAmount = &presaveAmount
 	return r
 }
 
@@ -276,9 +261,6 @@ func (a *BalanceAPIService) BalanceGetExecute(r ApiBalanceGetRequest) ([]Balance
 	if r.available != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "available", r.available, "", "")
 	}
-	if r.presaveAmount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "presave_amount", r.presaveAmount, "", "")
-	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
 	}
@@ -362,7 +344,6 @@ type ApiBalancePatchRequest struct {
 	ApiService *BalanceAPIService
 	dt *string
 	available *string
-	presaveAmount *string
 	id *string
 	prefer *string
 	balance *Balance
@@ -375,11 +356,6 @@ func (r ApiBalancePatchRequest) Dt(dt string) ApiBalancePatchRequest {
 
 func (r ApiBalancePatchRequest) Available(available string) ApiBalancePatchRequest {
 	r.available = &available
-	return r
-}
-
-func (r ApiBalancePatchRequest) PresaveAmount(presaveAmount string) ApiBalancePatchRequest {
-	r.presaveAmount = &presaveAmount
 	return r
 }
 
@@ -441,9 +417,6 @@ func (a *BalanceAPIService) BalancePatchExecute(r ApiBalancePatchRequest) (*http
 	}
 	if r.available != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "available", r.available, "", "")
-	}
-	if r.presaveAmount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "presave_amount", r.presaveAmount, "", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")

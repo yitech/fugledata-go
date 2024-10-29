@@ -60,8 +60,6 @@ type APIClient struct {
 	KlineAPI *KlineAPIService
 
 	MarketMetadataAPI *MarketMetadataAPIService
-
-	SettlementAPI *SettlementAPIService
 }
 
 type service struct {
@@ -86,7 +84,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InventoryAPI = (*InventoryAPIService)(&c.common)
 	c.KlineAPI = (*KlineAPIService)(&c.common)
 	c.MarketMetadataAPI = (*MarketMetadataAPIService)(&c.common)
-	c.SettlementAPI = (*SettlementAPIService)(&c.common)
 
 	return c
 }

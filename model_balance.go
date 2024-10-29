@@ -23,7 +23,6 @@ var _ MappedNullable = &Balance{}
 type Balance struct {
 	Dt string `json:"dt"`
 	Available *int32 `json:"available,omitempty"`
-	PresaveAmount *int32 `json:"presave_amount,omitempty"`
 	// Note: This is a Primary Key.<pk/>
 	Id int32 `json:"id"`
 }
@@ -105,38 +104,6 @@ func (o *Balance) SetAvailable(v int32) {
 	o.Available = &v
 }
 
-// GetPresaveAmount returns the PresaveAmount field value if set, zero value otherwise.
-func (o *Balance) GetPresaveAmount() int32 {
-	if o == nil || IsNil(o.PresaveAmount) {
-		var ret int32
-		return ret
-	}
-	return *o.PresaveAmount
-}
-
-// GetPresaveAmountOk returns a tuple with the PresaveAmount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Balance) GetPresaveAmountOk() (*int32, bool) {
-	if o == nil || IsNil(o.PresaveAmount) {
-		return nil, false
-	}
-	return o.PresaveAmount, true
-}
-
-// HasPresaveAmount returns a boolean if a field has been set.
-func (o *Balance) HasPresaveAmount() bool {
-	if o != nil && !IsNil(o.PresaveAmount) {
-		return true
-	}
-
-	return false
-}
-
-// SetPresaveAmount gets a reference to the given int32 and assigns it to the PresaveAmount field.
-func (o *Balance) SetPresaveAmount(v int32) {
-	o.PresaveAmount = &v
-}
-
 // GetId returns the Id field value
 func (o *Balance) GetId() int32 {
 	if o == nil {
@@ -174,9 +141,6 @@ func (o Balance) ToMap() (map[string]interface{}, error) {
 	toSerialize["dt"] = o.Dt
 	if !IsNil(o.Available) {
 		toSerialize["available"] = o.Available
-	}
-	if !IsNil(o.PresaveAmount) {
-		toSerialize["presave_amount"] = o.PresaveAmount
 	}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil

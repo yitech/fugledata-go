@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## BalanceDelete
 
-> BalanceDelete(ctx).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Prefer(prefer).Execute()
+> BalanceDelete(ctx).Dt(dt).Available(available).Id(id).Prefer(prefer).Execute()
 
 
 
@@ -32,13 +32,12 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	available := "available_example" // string |  (optional)
-	presaveAmount := "presaveAmount_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	prefer := "prefer_example" // string | Preference (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BalanceAPI.BalanceDelete(context.Background()).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Prefer(prefer).Execute()
+	r, err := apiClient.BalanceAPI.BalanceDelete(context.Background()).Dt(dt).Available(available).Id(id).Prefer(prefer).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BalanceAPI.BalanceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **available** | **string** |  | 
- **presaveAmount** | **string** |  | 
  **id** | **string** |  | 
  **prefer** | **string** | Preference | 
 
@@ -83,7 +81,7 @@ No authorization required
 
 ## BalanceGet
 
-> []Balance BalanceGet(ctx).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
+> []Balance BalanceGet(ctx).Dt(dt).Available(available).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
 
 
 
@@ -102,7 +100,6 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	available := "available_example" // string |  (optional)
-	presaveAmount := "presaveAmount_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	select_ := "select__example" // string | Filtering Columns (optional)
 	order := "order_example" // string | Ordering (optional)
@@ -114,7 +111,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BalanceAPI.BalanceGet(context.Background()).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
+	resp, r, err := apiClient.BalanceAPI.BalanceGet(context.Background()).Dt(dt).Available(available).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BalanceAPI.BalanceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +134,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **available** | **string** |  | 
- **presaveAmount** | **string** |  | 
  **id** | **string** |  | 
  **select_** | **string** | Filtering Columns | 
  **order** | **string** | Ordering | 
@@ -167,7 +163,7 @@ No authorization required
 
 ## BalancePatch
 
-> BalancePatch(ctx).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Prefer(prefer).Balance(balance).Execute()
+> BalancePatch(ctx).Dt(dt).Available(available).Id(id).Prefer(prefer).Balance(balance).Execute()
 
 
 
@@ -187,14 +183,13 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	available := "available_example" // string |  (optional)
-	presaveAmount := "presaveAmount_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	prefer := "prefer_example" // string | Preference (optional)
 	balance := *openapiclient.NewBalance(time.Now(), int32(123)) // Balance | balance (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BalanceAPI.BalancePatch(context.Background()).Dt(dt).Available(available).PresaveAmount(presaveAmount).Id(id).Prefer(prefer).Balance(balance).Execute()
+	r, err := apiClient.BalanceAPI.BalancePatch(context.Background()).Dt(dt).Available(available).Id(id).Prefer(prefer).Balance(balance).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BalanceAPI.BalancePatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,7 +210,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **available** | **string** |  | 
- **presaveAmount** | **string** |  | 
  **id** | **string** |  | 
  **prefer** | **string** | Preference | 
  **balance** | [**Balance**](Balance.md) | balance | 

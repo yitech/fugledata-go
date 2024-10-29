@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Dt** | **string** |  | 
 **Symbol** | **string** |  | 
-**NumShare** | **int32** |  | 
+**ShareQty** | **int32** |  | 
 **Id** | **int32** | Note: This is a Primary Key.&lt;pk/&gt; | 
 
 ## Methods
 
 ### NewInventory
 
-`func NewInventory(dt string, symbol string, numShare int32, id int32, ) *Inventory`
+`func NewInventory(dt string, symbol string, shareQty int32, id int32, ) *Inventory`
 
 NewInventory instantiates a new Inventory object
 This constructor will assign default values to properties that have it defined,
@@ -68,24 +68,24 @@ and a boolean to check if the value has been set.
 SetSymbol sets Symbol field to given value.
 
 
-### GetNumShare
+### GetShareQty
 
-`func (o *Inventory) GetNumShare() int32`
+`func (o *Inventory) GetShareQty() int32`
 
-GetNumShare returns the NumShare field if non-nil, zero value otherwise.
+GetShareQty returns the ShareQty field if non-nil, zero value otherwise.
 
-### GetNumShareOk
+### GetShareQtyOk
 
-`func (o *Inventory) GetNumShareOk() (*int32, bool)`
+`func (o *Inventory) GetShareQtyOk() (*int32, bool)`
 
-GetNumShareOk returns a tuple with the NumShare field if it's non-nil, zero value otherwise
+GetShareQtyOk returns a tuple with the ShareQty field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumShare
+### SetShareQty
 
-`func (o *Inventory) SetNumShare(v int32)`
+`func (o *Inventory) SetShareQty(v int32)`
 
-SetNumShare sets NumShare field to given value.
+SetShareQty sets ShareQty field to given value.
 
 
 ### GetId

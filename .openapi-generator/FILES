@@ -8,7 +8,6 @@ api_introspection.go
 api_inventory.go
 api_kline.go
 api_market_metadata.go
-api_settlement.go
 client.go
 configuration.go
 docs/AlembicVersion.md
@@ -22,8 +21,6 @@ docs/Kline.md
 docs/KlineAPI.md
 docs/MarketMetadata.md
 docs/MarketMetadataAPI.md
-docs/Settlement.md
-docs/SettlementAPI.md
 git_push.sh
 go.mod
 go.sum
@@ -32,7 +29,6 @@ model_balance.go
 model_inventory.go
 model_kline.go
 model_market_metadata.go
-model_settlement.go
 response.go
 test/api_alembic_version_test.go
 test/api_balance_test.go
@@ -40,5 +36,4 @@ test/api_introspection_test.go
 test/api_inventory_test.go
 test/api_kline_test.go
 test/api_market_metadata_test.go
-test/api_settlement_test.go
 utils.go

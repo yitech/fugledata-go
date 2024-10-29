@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## InventoryDelete
 
-> InventoryDelete(ctx).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Prefer(prefer).Execute()
+> InventoryDelete(ctx).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Prefer(prefer).Execute()
 
 
 
@@ -32,13 +32,13 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	symbol := "symbol_example" // string |  (optional)
-	numShare := "numShare_example" // string |  (optional)
+	shareQty := "shareQty_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	prefer := "prefer_example" // string | Preference (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.InventoryAPI.InventoryDelete(context.Background()).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Prefer(prefer).Execute()
+	r, err := apiClient.InventoryAPI.InventoryDelete(context.Background()).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Prefer(prefer).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **symbol** | **string** |  | 
- **numShare** | **string** |  | 
+ **shareQty** | **string** |  | 
  **id** | **string** |  | 
  **prefer** | **string** | Preference | 
 
@@ -83,7 +83,7 @@ No authorization required
 
 ## InventoryGet
 
-> []Inventory InventoryGet(ctx).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
+> []Inventory InventoryGet(ctx).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
 
 
 
@@ -102,7 +102,7 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	symbol := "symbol_example" // string |  (optional)
-	numShare := "numShare_example" // string |  (optional)
+	shareQty := "shareQty_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	select_ := "select__example" // string | Filtering Columns (optional)
 	order := "order_example" // string | Ordering (optional)
@@ -114,7 +114,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InventoryAPI.InventoryGet(context.Background()).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
+	resp, r, err := apiClient.InventoryAPI.InventoryGet(context.Background()).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Select_(select_).Order(order).Range_(range_).RangeUnit(rangeUnit).Offset(offset).Limit(limit).Prefer(prefer).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **symbol** | **string** |  | 
- **numShare** | **string** |  | 
+ **shareQty** | **string** |  | 
  **id** | **string** |  | 
  **select_** | **string** | Filtering Columns | 
  **order** | **string** | Ordering | 
@@ -167,7 +167,7 @@ No authorization required
 
 ## InventoryPatch
 
-> InventoryPatch(ctx).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Prefer(prefer).Inventory(inventory).Execute()
+> InventoryPatch(ctx).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Prefer(prefer).Inventory(inventory).Execute()
 
 
 
@@ -187,14 +187,14 @@ import (
 func main() {
 	dt := "dt_example" // string |  (optional)
 	symbol := "symbol_example" // string |  (optional)
-	numShare := "numShare_example" // string |  (optional)
+	shareQty := "shareQty_example" // string |  (optional)
 	id := "id_example" // string |  (optional)
 	prefer := "prefer_example" // string | Preference (optional)
 	inventory := *openapiclient.NewInventory(time.Now(), "Symbol_example", int32(123), int32(123)) // Inventory | inventory (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.InventoryAPI.InventoryPatch(context.Background()).Dt(dt).Symbol(symbol).NumShare(numShare).Id(id).Prefer(prefer).Inventory(inventory).Execute()
+	r, err := apiClient.InventoryAPI.InventoryPatch(context.Background()).Dt(dt).Symbol(symbol).ShareQty(shareQty).Id(id).Prefer(prefer).Inventory(inventory).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dt** | **string** |  | 
  **symbol** | **string** |  | 
- **numShare** | **string** |  | 
+ **shareQty** | **string** |  | 
  **id** | **string** |  | 
  **prefer** | **string** | Preference | 
  **inventory** | [**Inventory**](Inventory.md) | inventory | 

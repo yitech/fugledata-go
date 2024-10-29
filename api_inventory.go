@@ -27,7 +27,7 @@ type ApiInventoryDeleteRequest struct {
 	ApiService *InventoryAPIService
 	dt *string
 	symbol *string
-	numShare *string
+	shareQty *string
 	id *string
 	prefer *string
 }
@@ -42,8 +42,8 @@ func (r ApiInventoryDeleteRequest) Symbol(symbol string) ApiInventoryDeleteReque
 	return r
 }
 
-func (r ApiInventoryDeleteRequest) NumShare(numShare string) ApiInventoryDeleteRequest {
-	r.numShare = &numShare
+func (r ApiInventoryDeleteRequest) ShareQty(shareQty string) ApiInventoryDeleteRequest {
+	r.shareQty = &shareQty
 	return r
 }
 
@@ -100,8 +100,8 @@ func (a *InventoryAPIService) InventoryDeleteExecute(r ApiInventoryDeleteRequest
 	if r.symbol != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "symbol", r.symbol, "", "")
 	}
-	if r.numShare != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "num_share", r.numShare, "", "")
+	if r.shareQty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "share_qty", r.shareQty, "", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
@@ -159,7 +159,7 @@ type ApiInventoryGetRequest struct {
 	ApiService *InventoryAPIService
 	dt *string
 	symbol *string
-	numShare *string
+	shareQty *string
 	id *string
 	select_ *string
 	order *string
@@ -180,8 +180,8 @@ func (r ApiInventoryGetRequest) Symbol(symbol string) ApiInventoryGetRequest {
 	return r
 }
 
-func (r ApiInventoryGetRequest) NumShare(numShare string) ApiInventoryGetRequest {
-	r.numShare = &numShare
+func (r ApiInventoryGetRequest) ShareQty(shareQty string) ApiInventoryGetRequest {
+	r.shareQty = &shareQty
 	return r
 }
 
@@ -276,8 +276,8 @@ func (a *InventoryAPIService) InventoryGetExecute(r ApiInventoryGetRequest) ([]I
 	if r.symbol != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "symbol", r.symbol, "", "")
 	}
-	if r.numShare != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "num_share", r.numShare, "", "")
+	if r.shareQty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "share_qty", r.shareQty, "", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
@@ -362,7 +362,7 @@ type ApiInventoryPatchRequest struct {
 	ApiService *InventoryAPIService
 	dt *string
 	symbol *string
-	numShare *string
+	shareQty *string
 	id *string
 	prefer *string
 	inventory *Inventory
@@ -378,8 +378,8 @@ func (r ApiInventoryPatchRequest) Symbol(symbol string) ApiInventoryPatchRequest
 	return r
 }
 
-func (r ApiInventoryPatchRequest) NumShare(numShare string) ApiInventoryPatchRequest {
-	r.numShare = &numShare
+func (r ApiInventoryPatchRequest) ShareQty(shareQty string) ApiInventoryPatchRequest {
+	r.shareQty = &shareQty
 	return r
 }
 
@@ -442,8 +442,8 @@ func (a *InventoryAPIService) InventoryPatchExecute(r ApiInventoryPatchRequest) 
 	if r.symbol != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "symbol", r.symbol, "", "")
 	}
-	if r.numShare != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "num_share", r.numShare, "", "")
+	if r.shareQty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "share_qty", r.shareQty, "", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")

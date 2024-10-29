@@ -216,216 +216,6 @@ paths:
       tags:
       - market_metadata
       x-codegen-request-body-name: market_metadata
-  /settlement:
-    delete:
-      parameters:
-      - in: query
-        name: dt
-        schema:
-          type: string
-      - in: query
-        name: next_day
-        schema:
-          type: string
-      - in: query
-        name: after_next
-        schema:
-          type: string
-      - in: query
-        name: id
-        schema:
-          type: string
-      - description: Preference
-        in: header
-        name: Prefer
-        schema:
-          enum:
-          - return=representation
-          - return=minimal
-          - return=none
-          type: string
-      responses:
-        "204":
-          content: {}
-          description: No Content
-      tags:
-      - settlement
-    get:
-      parameters:
-      - in: query
-        name: dt
-        schema:
-          type: string
-      - in: query
-        name: next_day
-        schema:
-          type: string
-      - in: query
-        name: after_next
-        schema:
-          type: string
-      - in: query
-        name: id
-        schema:
-          type: string
-      - description: Filtering Columns
-        in: query
-        name: select
-        schema:
-          type: string
-      - description: Ordering
-        in: query
-        name: order
-        schema:
-          type: string
-      - description: Limiting and Pagination
-        in: header
-        name: Range
-        schema:
-          type: string
-      - description: Limiting and Pagination
-        in: header
-        name: Range-Unit
-        schema:
-          default: items
-          type: string
-      - description: Limiting and Pagination
-        in: query
-        name: offset
-        schema:
-          type: string
-      - description: Limiting and Pagination
-        in: query
-        name: limit
-        schema:
-          type: string
-      - description: Preference
-        in: header
-        name: Prefer
-        schema:
-          enum:
-          - count=none
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/settlement'
-                type: array
-            application/vnd.pgrst.object+json;nulls=stripped:
-              schema:
-                items:
-                  $ref: '#/components/schemas/settlement'
-                type: array
-            application/vnd.pgrst.object+json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/settlement'
-                type: array
-            text/csv:
-              schema:
-                items:
-                  $ref: '#/components/schemas/settlement'
-                type: array
-          description: OK
-        "206":
-          content: {}
-          description: Partial Content
-      tags:
-      - settlement
-    patch:
-      parameters:
-      - in: query
-        name: dt
-        schema:
-          type: string
-      - in: query
-        name: next_day
-        schema:
-          type: string
-      - in: query
-        name: after_next
-        schema:
-          type: string
-      - in: query
-        name: id
-        schema:
-          type: string
-      - description: Preference
-        in: header
-        name: Prefer
-        schema:
-          enum:
-          - return=representation
-          - return=minimal
-          - return=none
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          application/vnd.pgrst.object+json;nulls=stripped:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          application/vnd.pgrst.object+json:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/settlement'
-        description: settlement
-        required: false
-      responses:
-        "204":
-          content: {}
-          description: No Content
-      tags:
-      - settlement
-      x-codegen-request-body-name: settlement
-    post:
-      parameters:
-      - description: Filtering Columns
-        in: query
-        name: select
-        schema:
-          type: string
-      - description: Preference
-        in: header
-        name: Prefer
-        schema:
-          enum:
-          - return=representation
-          - return=minimal
-          - return=none
-          - resolution=ignore-duplicates
-          - resolution=merge-duplicates
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          application/vnd.pgrst.object+json;nulls=stripped:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          application/vnd.pgrst.object+json:
-            schema:
-              $ref: '#/components/schemas/settlement'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/settlement'
-        description: settlement
-        required: false
-      responses:
-        "201":
-          content: {}
-          description: Created
-      tags:
-      - settlement
-      x-codegen-request-body-name: settlement
   /inventory:
     delete:
       parameters:
@@ -438,7 +228,7 @@ paths:
         schema:
           type: string
       - in: query
-        name: num_share
+        name: share_qty
         schema:
           type: string
       - in: query
@@ -471,7 +261,7 @@ paths:
         schema:
           type: string
       - in: query
-        name: num_share
+        name: share_qty
         schema:
           type: string
       - in: query
@@ -556,7 +346,7 @@ paths:
         schema:
           type: string
       - in: query
-        name: num_share
+        name: share_qty
         schema:
           type: string
       - in: query
@@ -822,10 +612,6 @@ paths:
         schema:
           type: string
       - in: query
-        name: presave_amount
-        schema:
-          type: string
-      - in: query
         name: id
         schema:
           type: string
@@ -852,10 +638,6 @@ paths:
           type: string
       - in: query
         name: available
-        schema:
-          type: string
-      - in: query
-        name: presave_amount
         schema:
           type: string
       - in: query
@@ -937,10 +719,6 @@ paths:
           type: string
       - in: query
         name: available
-        schema:
-          type: string
-      - in: query
-        name: presave_amount
         schema:
           type: string
       - in: query
@@ -1376,26 +1154,6 @@ components:
       name: category
       schema:
         type: string
-    rowFilter.settlement.dt:
-      in: query
-      name: dt
-      schema:
-        type: string
-    rowFilter.settlement.next_day:
-      in: query
-      name: next_day
-      schema:
-        type: string
-    rowFilter.settlement.after_next:
-      in: query
-      name: after_next
-      schema:
-        type: string
-    rowFilter.settlement.id:
-      in: query
-      name: id
-      schema:
-        type: string
     rowFilter.inventory.dt:
       in: query
       name: dt
@@ -1406,9 +1164,9 @@ components:
       name: symbol
       schema:
         type: string
-    rowFilter.inventory.num_share:
+    rowFilter.inventory.share_qty:
       in: query
-      name: num_share
+      name: share_qty
       schema:
         type: string
     rowFilter.inventory.id:
@@ -1429,11 +1187,6 @@ components:
     rowFilter.balance.available:
       in: query
       name: available
-      schema:
-        type: string
-    rowFilter.balance.presave_amount:
-      in: query
-      name: presave_amount
       schema:
         type: string
     rowFilter.balance.id:
@@ -1497,22 +1250,6 @@ components:
           schema:
             $ref: '#/components/schemas/market_metadata'
       description: market_metadata
-      required: false
-    body.settlement:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/settlement'
-        application/vnd.pgrst.object+json;nulls=stripped:
-          schema:
-            $ref: '#/components/schemas/settlement'
-        application/vnd.pgrst.object+json:
-          schema:
-            $ref: '#/components/schemas/settlement'
-        text/csv:
-          schema:
-            $ref: '#/components/schemas/settlement'
-      description: settlement
       required: false
     body.inventory:
       content:
@@ -1603,38 +1340,12 @@ components:
       - id
       - symbol
       type: object
-    settlement:
-      example:
-        dt: 2000-01-23
-        after_next: 6
-        next_day: 0
-        id: 1
-      properties:
-        dt:
-          format: date
-          type: string
-        next_day:
-          format: bigint
-          type: integer
-        after_next:
-          format: bigint
-          type: integer
-        id:
-          description: |-
-            Note:
-            This is a Primary Key.<pk/>
-          format: integer
-          type: integer
-      required:
-      - dt
-      - id
-      type: object
     inventory:
       example:
         dt: 2000-01-23
         symbol: symbol
         id: 6
-        num_share: 0
+        share_qty: 0
       properties:
         dt:
           format: date
@@ -1642,7 +1353,7 @@ components:
         symbol:
           format: character varying
           type: string
-        num_share:
+        share_qty:
           format: integer
           type: integer
         id:
@@ -1654,7 +1365,7 @@ components:
       required:
       - dt
       - id
-      - num_share
+      - share_qty
       - symbol
       type: object
     alembic_version:
@@ -1674,17 +1385,13 @@ components:
     balance:
       example:
         dt: 2000-01-23
-        presave_amount: 6
         available: 0
-        id: 1
+        id: 6
       properties:
         dt:
           format: date
           type: string
         available:
-          format: bigint
-          type: integer
-        presave_amount:
           format: bigint
           type: integer
         id:

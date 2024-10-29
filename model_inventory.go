@@ -23,7 +23,7 @@ var _ MappedNullable = &Inventory{}
 type Inventory struct {
 	Dt string `json:"dt"`
 	Symbol string `json:"symbol"`
-	NumShare int32 `json:"num_share"`
+	ShareQty int32 `json:"share_qty"`
 	// Note: This is a Primary Key.<pk/>
 	Id int32 `json:"id"`
 }
@@ -34,11 +34,11 @@ type _Inventory Inventory
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInventory(dt string, symbol string, numShare int32, id int32) *Inventory {
+func NewInventory(dt string, symbol string, shareQty int32, id int32) *Inventory {
 	this := Inventory{}
 	this.Dt = dt
 	this.Symbol = symbol
-	this.NumShare = numShare
+	this.ShareQty = shareQty
 	this.Id = id
 	return &this
 }
@@ -99,28 +99,28 @@ func (o *Inventory) SetSymbol(v string) {
 	o.Symbol = v
 }
 
-// GetNumShare returns the NumShare field value
-func (o *Inventory) GetNumShare() int32 {
+// GetShareQty returns the ShareQty field value
+func (o *Inventory) GetShareQty() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.NumShare
+	return o.ShareQty
 }
 
-// GetNumShareOk returns a tuple with the NumShare field value
+// GetShareQtyOk returns a tuple with the ShareQty field value
 // and a boolean to check if the value has been set.
-func (o *Inventory) GetNumShareOk() (*int32, bool) {
+func (o *Inventory) GetShareQtyOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.NumShare, true
+	return &o.ShareQty, true
 }
 
-// SetNumShare sets field value
-func (o *Inventory) SetNumShare(v int32) {
-	o.NumShare = v
+// SetShareQty sets field value
+func (o *Inventory) SetShareQty(v int32) {
+	o.ShareQty = v
 }
 
 // GetId returns the Id field value
@@ -159,7 +159,7 @@ func (o Inventory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["dt"] = o.Dt
 	toSerialize["symbol"] = o.Symbol
-	toSerialize["num_share"] = o.NumShare
+	toSerialize["share_qty"] = o.ShareQty
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }
@@ -171,7 +171,7 @@ func (o *Inventory) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"dt",
 		"symbol",
-		"num_share",
+		"share_qty",
 		"id",
 	}
 
